@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">AndroidDevelopment1</string>
+    <string name="hello">Hello Lab</string>
+    <string name="click">OnClick</string>
+    <string-array name="data">
+        <item>Palestine</item>
+        <item>Egypt</item>
+        <item>Qatar</item>
+        <item>Turkey</item>
+    </string-array>
+</resources>
