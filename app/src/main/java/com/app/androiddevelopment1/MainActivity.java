@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 if (cb_3.isChecked())
                     sb.append(cb_3.getText().toString());
 
-                Toast.makeText(MainActivity.this, sb.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, sb.toString() +",", Toast.LENGTH_SHORT).show();
 
             }
         });
