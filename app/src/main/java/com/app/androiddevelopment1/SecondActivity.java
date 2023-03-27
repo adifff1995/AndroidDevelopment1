@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.app.androiddevelopment1.databinding.ActivitySecondBinding;
 
+
 public class SecondActivity extends AppCompatActivity {
     ActivitySecondBinding binding;
     @Override
@@ -18,7 +19,6 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivitySecondBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
 
         binding.button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,5 +29,6 @@ public class SecondActivity extends AppCompatActivity {
                 finish();
             }
         });
+
     }
 }
