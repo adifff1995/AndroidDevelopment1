@@ -19,7 +19,6 @@
             android:id="@+id/textTitle"
             android:background="@drawable/success_background"
             android:padding="10dp"
-            android:text="svmnfkdsjvnkfdjvbkfjdsbv"
             android:textColor="@color/white"
             android:textSize="17sp"
             android:textStyle="bold"
@@ -39,7 +38,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textMessage"
-            android:text="dvcjbdsjkvbkdsv"
             android:layout_marginStart="20dp"
             android:layout_marginTop="18sp"
             android:layout_marginEnd="20dp"
@@ -58,6 +56,7 @@
         android:background="@drawable/button_success_background"
         android:textColor="@color/white"
         android:textSize="14sp"
+        android:text="Yes"
         app:layout_constraintBottom_toBottomOf="@id/layoutDialog"
         app:layout_constraintTop_toBottomOf="@id/layoutDialog"/>
 

@@ -32,7 +32,6 @@ public class AlertDialogActivity extends AppCompatActivity {
             "GATE", "ISRO CS",
             "UGC NET CS", "CS Subjects",
             "Web Technologies"};
-
     AlertDialog dialog;
     private ActivityAlertDialogBinding binding;
 
@@ -42,16 +41,14 @@ public class AlertDialogActivity extends AppCompatActivity {
         binding = ActivityAlertDialogBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         registerForContextMenu(binding.button7);
-        String[]list = getResources().getStringArray(R.array.data);
-        ArrayAdapter<String>adapter = new ArrayAdapter<>(this,
-                R.layout.custom_text_item,list);
-        binding.listview.setAdapter(adapter);
+        String[]data = getResources().getStringArray(R.array.data);
+//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+//                R.layout.custom_list_item, data);
+//        binding.listview.setAdapter(adapter);
         binding.listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                if (position==0)
-                    finish();
-                Toast.makeText(AlertDialogActivity.this,list[position] , Toast.LENGTH_SHORT).show();
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(AlertDialogActivity.this, data[i], Toast.LENGTH_SHORT).show();
             }
         });
         binding.button7.setOnClickListener(new View.OnClickListener() {
@@ -69,14 +66,12 @@ public class AlertDialogActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         CustomDialogBinding dialogBinding = CustomDialogBinding.inflate(getLayoutInflater());
         builder.setView(dialogBinding.getRoot());
-
         dialogBinding.textTitle.setText("Warning");
-        dialogBinding.textMessage.setText("Are you sure you want to Exit ?!");
-        dialogBinding.buttonAction.setText("OK");
+        dialogBinding.textMessage.setText("Are you sure for exit this app ?!");
         dialogBinding.buttonAction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(AlertDialogActivity.this, "Done", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AlertDialogActivity.this, "Yes", Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
             }
         });
@@ -86,19 +81,21 @@ public class AlertDialogActivity extends AppCompatActivity {
                 dialog.dismiss();
             }
         });
+
         dialog = builder.create();
         dialog.setCancelable(false);
         dialog.show();
+
     }
 
     private void showAlertDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Warning");
-        builder.setMessage("Are you sure you want to Exit ?!");
+        builder.setMessage("Are you sure for exit this app ?!");
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(AlertDialogActivity.this, "YES", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AlertDialogActivity.this, "Yes", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -109,21 +106,21 @@ public class AlertDialogActivity extends AppCompatActivity {
             }
         });
 
-        builder.setNeutralButton("later", new DialogInterface.OnClickListener() {
+        builder.setNeutralButton("Later", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Toast.makeText(AlertDialogActivity.this, "Later", Toast.LENGTH_SHORT).show();
-
             }
         });
 
         AlertDialog dialog = builder.create();
         dialog.setCancelable(false);
         dialog.show();
+
     }
 
-    private void showPopUpMenu(View v) {
-        PopupMenu popupMenu = new PopupMenu(this, v);
+    private void showPopUpMenu(View view) {
+        PopupMenu popupMenu = new PopupMenu(this, view);
         MenuInflater inflater = popupMenu.getMenuInflater();
         inflater.inflate(R.menu.my_menu, popupMenu.getMenu());
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
@@ -131,16 +128,16 @@ public class AlertDialogActivity extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.menu_share:
-                        Toast.makeText(AlertDialogActivity.this, "menu_share", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AlertDialogActivity.this, "Share", Toast.LENGTH_SHORT).show();
                         break;
-
+                    case R.id.menu_sitting:
+                        Toast.makeText(AlertDialogActivity.this, "Setting", Toast.LENGTH_SHORT).show();
+                        break;
                     case R.id.menu_logout:
                         finish();
                         break;
 
-                    case R.id.menu_sitting:
-                        Toast.makeText(AlertDialogActivity.this, "menu_sitting", Toast.LENGTH_SHORT).show();
-                        break;
+
                 }
                 return true;
             }
@@ -159,16 +156,16 @@ public class AlertDialogActivity extends AppCompatActivity {
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_share:
-                Toast.makeText(this, "menu_share", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
                 break;
-
+            case R.id.menu_sitting:
+                Toast.makeText(this, "Setting", Toast.LENGTH_SHORT).show();
+                break;
             case R.id.menu_logout:
                 finish();
                 break;
 
-            case R.id.menu_sitting:
-                Toast.makeText(this, "menu_sitting", Toast.LENGTH_SHORT).show();
-                break;
+
         }
         return super.onContextItemSelected(item);
     }
